@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genetica</title>
+</head>
+<body>
+    <input type="text" id="gen">
+    <button onclick="gen()">Mandar</button>
+    <script>
+function gen() {
+    let txt = document.getElementById('gen').value
+    var adnCom=cambiar('T','A',txt,false),
+    arnMen=cambiar('A','U',(adnCom).toString(),false),
+    arnTran=cambiar('U','T',(arnMen).toString(),true)
+    //arnRibo=ri(arnmen)
+    console.log(`AdnCom`);
+      console.log(adnCom);
+      console.log(`ArnM`);
+      console.log(arnMen);
+      console.log(`ArnT`);
+     console.log(arnTran);
+}
+function cambiar(A,T,txt,U) {
+    hebra=txt.split('')
+    var adnCom='';
+    hebra.forEach(e => {
+        if (e=='A') {
+         adnCom=adnCom+A
+        }
+        if (U) {
+         if (e=='U') {
+            adnCom=adnCom+'A'
+         }   
+        }
+        if (e=='T') {
+         adnCom=adnCom+T   
+        }
+        if (e=='G') {
+         adnCom=adnCom+'C'   
+        }
+        if (e=='C') {
+         adnCom=adnCom+'G'   
+        }
+    });
+    adnCom=Array.from(adnCom)
+    var tem = '',
+    a=[],
+    c=0
+    adnCom.forEach(e => {
+        c++
+        if (c==3) {
+            tem=tem+e
+            c=0
+            a.push(tem)
+            tem=''
+        }else{
+            tem=tem+e
+        }
+    });
+    return a
+}
+    </script>
+</body>
+</html>
